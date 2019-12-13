@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-QuanLyNhaHangApplication<QuanLyNhaHang>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.demo.QuanLyNhaHangApplication",
+            "projectName": "QuanLyNhaHang",
+            "args": ""
+        }
+    ]
+}
