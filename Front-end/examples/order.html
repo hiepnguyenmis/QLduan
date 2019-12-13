@@ -10,17 +10,18 @@
             <div class="col-sm-6 border rounded bg-secondary">
               <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="table-tab" data-toggle="tab" href="#ban" target="_self" role="tab"
-                    aria-controls="table" aria-selected="true">BÀN</a>
+                  <a class="nav-link active" id="menu-tab" data-toggle="tab" href="#menu" target="_self" role="tab"
+                    aria-controls="menu" aria-selected="true">THỰC ĐƠN</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" target="_self" role="tab"
-                    aria-controls="menu" aria-selected="false">THỰC ĐƠN</a>
+                  <a class="nav-link" id="table-tab" data-toggle="tab" href="#ban" target="_self" role="tab"
+                    aria-controls="table" aria-selected="false">BÀN</a>
                 </li>
+
 
               </ul>
               <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="ban" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show" id="ban" role="tabpanel" aria-labelledby="home-tab">
                   <div class="card-deck bg-white border">
                     <a ng-repeat="x in tables" ng-click="getTable(x)" id="a">
                       <!--repeat here -->
@@ -38,9 +39,9 @@
                   </div>
                 </div>
 
-                <div class="tab-pane fade show " id="menu" role="tabpanel" aria-labelledby="home-tab">
+                <div  class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="home-tab">
                   <div class="card-deck bg-white border">
-                    <a ng-repeat="x in foods" ng-click="addFood(x)">
+                    <a class="foodMenu" ng-repeat="x in foods" ng-click="addFood(x)">
                       <!--repeat here -->
                       <div class="card-block mb-2 mt-2">
 
@@ -60,7 +61,22 @@
             <div class="col-sm-6">
               <div class="card border">
                 <div class="card-header bg-secondary">
-                  <h1>Bàn {{tableIndex}}</h1>
+
+                  <label for="singleSelect"> Chọn bàn: </label>
+                  <select name="mySelect" id="mySelect"
+                        ng-options="option.ban_NO for option in tables track by option.ban_NO"
+                        ng-model="selectedOption" ng-change="getTable(selectedOption)">
+                  </select>
+
+                  <label class="ml-5" for="singleSelect"> Chuyển bàn: </label>
+                  <select name="mySelect" id="mySelect"
+                        ng-options="option.ban_NO for option in tables track by option.ban_NO"
+                        ng-model="selectedOption" ng-change="getTable(selectedOption)">
+                  </select>
+
+                  <!--<h1>Bàn {{tableIndex}}</h1>-->
+
+
                 </div>
                 <div class="card-body" style="height:40em; overflow-y: scroll;">
                   <div class="table-responsive">

@@ -35,19 +35,19 @@
               }
             }
           });
-        });  
+        });
     }, function myError(response) {
       $scope.tables = response.statusText;
     });
-    
-    
+
+
     function AdminController($scope) {
       $scope.sections = $scope.tables
-  
+
       $scope.setMaster = function(section) {
           $scope.selected = section;
       }
-  
+
       $scope.isSelected = function(section) {
           return $scope.selected === section;
       }
@@ -109,6 +109,10 @@
       });
     };
 
+
+    $scope.getTable2 = function(table) {
+      alert("Xin chao");
+    }
     $http({
       method: "GET",
       url: "http://localhost:8080/api/GetAllBan"
@@ -373,7 +377,7 @@
           });
         });
     }
-    
+
 
     $scope.payBill=function(){
       var id="";
