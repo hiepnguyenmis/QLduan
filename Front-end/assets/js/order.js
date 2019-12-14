@@ -68,8 +68,8 @@
       var id = "";
 
       $scope.tableIndex = table.ban_ID;
-      /**/ 
-      //$scope.tableIndex= 0; 
+      /**/
+      //$scope.tableIndex= 0;
       console.log("id"+$scope.tableIndex);
       $http({
         method: "GET",
@@ -457,7 +457,7 @@
             console.log(table);
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/UpdateHoaDon',
+                url: 'http://localhost:8080/api/UpdateHD',
                 data: JSON.stringify(data),
                 headers: {
                   "Content-Type": "application/json; charset=UTF-8"
@@ -468,7 +468,7 @@
                 $window.location.reload();
               });
           });
-  
+
         }
       });
     }
@@ -554,6 +554,6 @@
 
     }
     });
-    
+
   });
 }(angular.module("myApp")));

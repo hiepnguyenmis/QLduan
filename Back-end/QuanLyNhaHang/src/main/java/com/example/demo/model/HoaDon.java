@@ -145,6 +145,14 @@ public class HoaDon implements Serializable {
 		this.tongTien = tongTien;
 	}
 
+	@Override
+	public String toString() {
+		return "HoaDon [HOADON_ID=" + HOADON_ID + ", HOADON_NO=" + HOADON_NO + ", HOADON_DATE=" + HOADON_DATE
+				+ ", HOADON_STATUS=" + HOADON_STATUS + ", HOADON_TAX=" + HOADON_TAX + ", KHACHHANG_KHACHHANG_ID="
+				+ KHACHHANG_KHACHHANG_ID + ", BAN_BAN_ID=" + BAN_BAN_ID + ", NHANVIEN_NHANVIEN_ID="
+				+ NHANVIEN_NHANVIEN_ID + ", tongTien=" + tongTien + "]";
+	}
+
 	
 
 	// SETTER

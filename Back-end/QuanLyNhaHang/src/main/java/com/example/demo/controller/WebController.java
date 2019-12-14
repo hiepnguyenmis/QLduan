@@ -505,12 +505,14 @@ public class WebController {
 	@RequestMapping(path = "/GetAllHoaDon", produces = MediaType.APPLICATION_JSON_VALUE)
 	public java.util.List<HoaDon> GetAllHoaDons() {
 		// This returns a JSON or XML with the users
+		System.out.println("Hello1");
 		return repositoryHoaDon.GetAllHoaDons();
 	}
 
 	// LAY 1 HoaDon
-	@RequestMapping(value = "/HoaDon/{id}", method = RequestMethod.GET)
+	@RequestMapping(path = "/HoaDon/{id}", method = RequestMethod.GET)
 	public HoaDon FindHoaDonByID(@PathVariable("id") long id) {
+		System.out.println("Hello2");
 		return repositoryHoaDon.GetHoaDon(id);
 	}
 
@@ -525,9 +527,10 @@ public class WebController {
 	}
 
 	// CAP NHAT HoaDon
-	@RequestMapping(value = "/UpdateHoaDon", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(path = "/UpdateHD", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public boolean UpdateHoaDon(@Valid @RequestBody HoaDon hdForm) {
 		try {
+			System.out.println(hdForm.toString()+"Hello");
 			return repositoryHoaDon.UpdateHoaDon(hdForm);
 		} catch (Exception e) {
 			// TODO: handle exception
