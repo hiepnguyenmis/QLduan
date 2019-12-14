@@ -68,12 +68,16 @@
       var id = "";
 
       $scope.tableIndex = table.ban_ID;
+      /**/ 
+      //$scope.tableIndex= 0; 
+      console.log("id"+$scope.tableIndex);
       $http({
         method: "GET",
         url: "http://localhost:8080/api/GetHoaDonToStatus/false"
       }).then(function mySuccess(response) {
         $scope.hdidctt = response.data;
-
+        console.log('*');
+        console.log(response.data);
         angular.forEach($scope.hdidctt, function(k) {
           if (k.ban_BAN_ID == $scope.tableIndex) {
             id = k.hoadon_ID;
@@ -88,6 +92,8 @@
         }).then(function mySuccess(response) {
 
           $scope.details = response.data;
+          console.log('*details');
+          console.log(response.data);
           angular.forEach($scope.details, function(k) {
             $scope.total = $scope.total + (k.hoadonchitiet_PRICE * k.hoadonchitiet_SOLUONG);
             $http({
@@ -122,6 +128,7 @@
       $scope.addFood = function(food) {
         var d = 0;
         var id = "";
+        //$scope.tableIndex=0;
         $http({
           method: "GET",
           url: "http://localhost:8080/api/GetHoaDonToStatus/false"
@@ -420,7 +427,51 @@
         }
       });
     }
+    $scope.changeTable=function(table){
+      var id="";
+      $http({
+        method: "GET",
+        url: "http://localhost:8080/api/GetHoaDonToStatus/false"
+      }).then(function mySuccess(response) {
+        $scope.hoadonct = response.data;
+        angular.forEach($scope.hoadonct, function(k) {
+          if (k.ban_BAN_ID == $scope.tableIndex) {
+            id = k.hoadon_ID;
+            console.log("id hoadon"+id);
+            $scope.hdno=k.hoadon_NO;
+            $scope.day=k.hoadon_DATE;
+          }
+        });
+        if(id != null && id != ""){
+          $http({
+            method: "GET",
+            url: "http://localhost:8080/api/HoaDon/" + id
+          }).then(function mySuccess(data) {
+            var data = {
+              "hoadon_ID": id,
+              "ban_BAN_ID": table.ban_ID,
+              "hoadon_STATUS": false
+            };
 
+            console.log(JSON.stringify(data));
+            console.log(table);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/UpdateHoaDon',
+                data: JSON.stringify(data),
+                headers: {
+                  "Content-Type": "application/json; charset=UTF-8"
+                },
+              })
+              .then(function mySuccess(response) {
+                alert("Da thay doi ban");
+                $window.location.reload();
+              });
+          });
+  
+        }
+      });
+    }
     $scope.delete= function(food){
       $http({
         method: "GET",
@@ -503,5 +554,6 @@
 
     }
     });
+    
   });
 }(angular.module("myApp")));

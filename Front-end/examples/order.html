@@ -71,10 +71,10 @@
                   <label class="ml-5" for="singleSelect"> Chuyển bàn: </label>
                   <select name="mySelect" id="mySelect"
                         ng-options="option.ban_NO for option in tables track by option.ban_NO"
-                        ng-model="selectedOption" ng-change="getTable(selectedOption)">
+                        ng-model="selectedOption" ng-change="changeTable(selectedOption)">
                   </select>
 
-                  <!--<h1>Bàn {{tableIndex}}</h1>-->
+                  <!-- <h1>Bàn {{tableIndex}}</h1> -->
 
 
                 </div>
