@@ -538,6 +538,17 @@ public class WebController {
 		}
 
 	}
+	@RequestMapping(path = "/UpdateIDHD", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public boolean UpdateIDHoaDon(@Valid @RequestBody HoaDon hdForm) {
+		try {
+			System.out.println(hdForm.toString()+"Hello");
+			return repositoryHoaDon.UpdateIDHoadon(hdForm);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+
+	}
 
 	// XOA HoaDon
 	@RequestMapping(value = "/DeleteHoaDon/{id}", method = RequestMethod.POST)
@@ -712,11 +723,6 @@ public class WebController {
 		Collections.sort(list,new CustomComparatorSortHoaDonDate());
 		return list;
 	}
-	
-	
-
-	
-
 	// REQUEST THONG KE MON AN Theo Ngay
 	@RequestMapping(path = "/ThongKeMonAn", method = RequestMethod.GET)
 	@ResponseBody
@@ -744,7 +750,6 @@ public class WebController {
 		public List<HoaDon> ThongKeHoaDon(@RequestParam(value = "fromDate") Date fromDate,
 				@RequestParam(value = "toDate") Date toDate) {
 			// This returns a JSON or XML with the users
-
 			return this.ThongKeHoaDonTheoNgay(fromDate, toDate);
 
 		}
